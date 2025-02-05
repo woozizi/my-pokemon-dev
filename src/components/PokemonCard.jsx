@@ -2,7 +2,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Card, ImgInCard } from "../style/CardStyle";
-
+import { useContext } from "react";
+import { PokemonContext } from "../context/pokemonContext";
 const AddPokemonButton = styled.button`
   background-color: red;
   border: none;
@@ -12,10 +13,11 @@ const AddPokemonButton = styled.button`
   cursor: pointer;
 `;
 
-const PokemonCard = ({ pokemon, addPokemon }) => {
+const PokemonCard = ({ pokemon }) => {
+  const { addPokemon } = useContext(PokemonContext);
   const navigate = useNavigate();
 
-  const goToDetail = () => {
+  const goToDetail = (id) => {
     navigate(`/detail/${pokemon.id}`);
   };
 

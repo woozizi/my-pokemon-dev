@@ -7,10 +7,21 @@ import {
   PokemonCardDiv,
   DeletePokemonButton,
 } from "../style/DashBoardStyle";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { PokemonContext } from "../context/pokemonContext";
 
-const Dashboard = ({ selectedPokemons, setSelectedPokemons }) => {
-  const deletePokemon = (id) => {
-    setSelectedPokemons((prev) => prev.filter((pokemon) => pokemon.id !== id));
+const Dashboard = () => {
+  // const deletePokemon = (id) => {
+  //   setSelectedPokemons((prev) => prev.filter((pokemon) => pokemon.id !== id));
+  // };
+
+  const { selectedPokemons, deletePokemon } = useContext(PokemonContext);
+
+  const navigate = useNavigate();
+
+  const goToDetail = (id) => {
+    navigate(`/detail/${id}`);
   };
 
   return (
@@ -28,6 +39,7 @@ const Dashboard = ({ selectedPokemons, setSelectedPokemons }) => {
                   <ImgInCard
                     src={selectedPokemons[index].img_url}
                     alt={selectedPokemons[index].korean_name}
+                    onClick={() => goToDetail(selectedPokemons[index].id)}
                   />
                   <h4>{selectedPokemons[index].korean_name}</h4>
                   <p>No. {selectedPokemons[index].id}</p>

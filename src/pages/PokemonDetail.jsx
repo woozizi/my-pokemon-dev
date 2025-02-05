@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import MOCK_DATA from "../assets/MOCK_DATA";
 import { DetailWrapper, Card, BackButton } from "../style/PokemonDetailStyle";
 
