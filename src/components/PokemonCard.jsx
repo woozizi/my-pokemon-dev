@@ -17,7 +17,7 @@ const PokemonCard = ({ pokemon }) => {
   const { addPokemon } = useContext(PokemonContext);
   const navigate = useNavigate();
 
-  const goToDetail = (id) => {
+  const goToDetail = () => {
     navigate(`/detail/${pokemon.id}`);
   };
 

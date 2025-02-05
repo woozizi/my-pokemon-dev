@@ -12,10 +12,6 @@ import { useContext } from "react";
 import { PokemonContext } from "../context/pokemonContext";
 
 const Dashboard = () => {
-  // const deletePokemon = (id) => {
-  //   setSelectedPokemons((prev) => prev.filter((pokemon) => pokemon.id !== id));
-  // };
-
   const { selectedPokemons, deletePokemon } = useContext(PokemonContext);
 
   const navigate = useNavigate();
