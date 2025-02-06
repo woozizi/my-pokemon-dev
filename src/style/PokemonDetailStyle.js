@@ -17,7 +17,7 @@ export const Card = styled.div`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 `;
 
-export const BackButton = styled.button`
+export const ButtonIndetail = styled.button`
   background-color: red;
   color: white;
   border: none;

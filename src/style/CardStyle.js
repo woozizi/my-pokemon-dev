@@ -23,3 +23,12 @@ export const ImgInCard = styled.img`
   }
   cursor: pointer;
 `;
+
+export const AddPokemonButton = styled.button`
+  background-color: red;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+`;

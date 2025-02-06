@@ -1,17 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { Card, ImgInCard } from "../style/CardStyle";
+import { AddPokemonButton, Card, ImgInCard } from "../style/CardStyle";
 import { useContext } from "react";
 import { PokemonContext } from "../context/pokemonContext";
-const AddPokemonButton = styled.button`
-  background-color: red;
-  border: none;
-  color: white;
-  border-radius: 10px;
-  padding: 5px 10px;
-  cursor: pointer;
-`;
 
 const PokemonCard = ({ pokemon }) => {
   const { addPokemon } = useContext(PokemonContext);

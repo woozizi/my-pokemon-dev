@@ -1,12 +1,15 @@
 import React from "react";
 import PokemonCard from "./PokemonCard";
-import MOCK_DATA from "../assets/MOCK_DATA";
 import { ListWrapper } from "../style/PokemonListStyle";
+import { useContext } from "react";
+import { PokemonContext } from "../context/pokemonContext";
 
 const PokemonList = () => {
+  const { pokemonList } = useContext(PokemonContext);
+
   return (
     <ListWrapper>
-      {MOCK_DATA.map((pokemon) => (
+      {pokemonList.map((pokemon) => (
         <PokemonCard key={pokemon.id} pokemon={pokemon} />
       ))}
     </ListWrapper>

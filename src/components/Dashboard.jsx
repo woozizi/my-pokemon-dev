@@ -10,16 +10,20 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { PokemonContext } from "../context/pokemonContext";
+import { useMemo } from "react";
 
 const Dashboard = () => {
   const { selectedPokemons, deletePokemon } = useContext(PokemonContext);
 
   const navigate = useNavigate();
 
-  const goToDetail = (id) => {
-    navigate(`/detail/${id}`);
+  const goToDetail = (pokemon) => {
+    navigate(`/detail/${pokemon.id}`);
   };
 
+  const fullPokemons = useMemo(() => {
+    return Array.from({ length: 6 }).map((_, index) => selectedPokemons[index]);
+  }, [selectedPokemons]);
   return (
     <>
       <DashBoardWrapper>
@@ -28,20 +32,18 @@ const Dashboard = () => {
         </h1>
 
         <PokemonCardWrapper>
-          {Array.from({ length: 6 }).map((_, index) => (
+          {fullPokemons.map((pokemon, index) => (
             <PokemonCardDiv key={index}>
-              {selectedPokemons[index] ? (
+              {pokemon ? (
                 <Card>
                   <ImgInCard
-                    src={selectedPokemons[index].img_url}
-                    alt={selectedPokemons[index].korean_name}
-                    onClick={() => goToDetail(selectedPokemons[index].id)}
+                    src={pokemon.img_url}
+                    alt={pokemon.korean_name}
+                    onClick={() => goToDetail(pokemon)}
                   />
-                  <h4>{selectedPokemons[index].korean_name}</h4>
-                  <p>No. {selectedPokemons[index].id}</p>
-                  <DeletePokemonButton
-                    onClick={() => deletePokemon(selectedPokemons[index].id)}
-                  >
+                  <h4>{pokemon.korean_name}</h4>
+                  <p>No. {pokemon.id}</p>
+                  <DeletePokemonButton onClick={() => deletePokemon(pokemon)}>
                     삭제
                   </DeletePokemonButton>
                 </Card>
