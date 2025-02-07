@@ -25,7 +25,9 @@ export const PokemonProvider = ({ children }) => {
   };
 
   const deletePokemon = (pokemon) => {
-    setSelectedPokemons((prev) => prev.filter((p) => p.id !== pokemon.id));
+    setSelectedPokemons((prev) => {
+      return prev.filter((p) => p.id !== pokemon.id);
+    });
     alert("도감에 삭제했습니다.");
   };
 

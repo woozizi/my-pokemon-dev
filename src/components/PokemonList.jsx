@@ -1,12 +1,10 @@
 import React from "react";
 import PokemonCard from "./PokemonCard";
 import { ListWrapper } from "../style/PokemonListStyle";
-import { useContext } from "react";
-import { PokemonContext } from "../context/pokemonContext";
+import { useSelector } from "react-redux";
 
 const PokemonList = () => {
-  const { pokemonList } = useContext(PokemonContext);
-
+  const pokemonList = useSelector((state) => state.pokemon.pokemonList);
   return (
     <ListWrapper>
       {pokemonList.map((pokemon) => (

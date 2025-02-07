@@ -4,22 +4,22 @@ import Home from "../pages/Home";
 import Dex from "../pages/Dex";
 import GloberStyle from "../GlobalStyle";
 import PokemonDetail from "../pages/PokemonDetail";
-import { PokemonProvider } from "../context/pokemonContext";
+import { Provider } from "react-redux";
+import store from "../redux/config/store";
 
 const Router = () => {
   return (
     <>
       <GloberStyle />
-
-      <BrowserRouter>
-        <PokemonProvider>
+      <Provider store={store}>
+        <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/dex" element={<Dex />} />
             <Route path="/detail/:id" element={<PokemonDetail />} />
           </Routes>
-        </PokemonProvider>
-      </BrowserRouter>
+        </BrowserRouter>
+      </Provider>
     </>
   );
 };

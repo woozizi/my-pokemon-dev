@@ -8,13 +8,16 @@ import {
   DeletePokemonButton,
 } from "../style/DashBoardStyle";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { PokemonContext } from "../context/pokemonContext";
 import { useMemo } from "react";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { deletePokemon } from "../redux/slices/pokemonSlice";
 
 const Dashboard = () => {
-  const { selectedPokemons, deletePokemon } = useContext(PokemonContext);
-
+  const selectedPokemons = useSelector(
+    (state) => state.pokemon.selectedPokemons
+  );
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const goToDetail = (pokemon) => {
@@ -43,7 +46,9 @@ const Dashboard = () => {
                   />
                   <h4>{pokemon.korean_name}</h4>
                   <p>No. {pokemon.id}</p>
-                  <DeletePokemonButton onClick={() => deletePokemon(pokemon)}>
+                  <DeletePokemonButton
+                    onClick={() => dispatch(deletePokemon(pokemon))}
+                  >
                     삭제
                   </DeletePokemonButton>
                 </Card>
