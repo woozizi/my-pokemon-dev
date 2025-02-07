@@ -37,6 +37,7 @@ export const PokemonProvider = ({ children }) => {
     deletePokemon,
     setSelectedPokemons,
     pokemonList,
+    setPokomonList,
   };
 
   return (
