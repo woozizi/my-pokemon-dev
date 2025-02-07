@@ -8,35 +8,32 @@ import {
   DeletePokemonButton,
 } from "../style/DashBoardStyle";
 import { useNavigate } from "react-router-dom";
-import { useMemo } from "react";
 import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { deletePokemon } from "../redux/slices/pokemonSlice";
+import usePokemonHandler from "../hooks/usePokemonHandler";
 
 const Dashboard = () => {
+  // router
+  const navigate = useNavigate();
+  const goToDetail = (pokemon) => navigate(`/detail/${pokemon.id}`);
+
+  //redux
   const selectedPokemons = useSelector(
     (state) => state.pokemon.selectedPokemons
   );
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
-  const goToDetail = (pokemon) => {
-    navigate(`/detail/${pokemon.id}`);
-  };
+  //handler
+  const { handleDeletePokemon } = usePokemonHandler();
 
-  const fullPokemons = useMemo(() => {
-    return Array.from({ length: 6 }).map((_, index) => selectedPokemons[index]);
-  }, [selectedPokemons]);
   return (
-    <>
-      <DashBoardWrapper>
-        <h1 style={{ marginBottom: "50px", color: "red", padding: "15px" }}>
-          나만의 포켓몬
-        </h1>
-
-        <PokemonCardWrapper>
-          {fullPokemons.map((pokemon, index) => (
-            <PokemonCardDiv key={index}>
+    <DashBoardWrapper>
+      <h1 style={{ marginBottom: "50px", color: "red", padding: "15px" }}>
+        나만의 포켓몬 도감
+      </h1>
+      <PokemonCardWrapper>
+        {Array.from({ length: 6 }).map((_, idx) => {
+          const pokemon = selectedPokemons[idx];
+          return (
+            <PokemonCardDiv key={idx}>
               {pokemon ? (
                 <Card>
                   <ImgInCard
@@ -47,7 +44,7 @@ const Dashboard = () => {
                   <h4>{pokemon.korean_name}</h4>
                   <p>No. {pokemon.id}</p>
                   <DeletePokemonButton
-                    onClick={() => dispatch(deletePokemon(pokemon))}
+                    onClick={() => handleDeletePokemon(pokemon)}
                   >
                     삭제
                   </DeletePokemonButton>
@@ -56,10 +53,10 @@ const Dashboard = () => {
                 <img src={ball} alt="빈 아이콘" width="50px" />
               )}
             </PokemonCardDiv>
-          ))}
-        </PokemonCardWrapper>
-      </DashBoardWrapper>
-    </>
+          );
+        })}
+      </PokemonCardWrapper>
+    </DashBoardWrapper>
   );
 };
 

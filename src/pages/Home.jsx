@@ -10,12 +10,10 @@ const Home = () => {
   };
 
   return (
-    <>
-      <HomeContainer>
-        <h1>POKEMON</h1>
-        <StartButton onClick={goToDex}>포켓몬 도감 시작하기</StartButton>
-      </HomeContainer>
-    </>
+    <HomeContainer>
+      <h1>POKEMON</h1>
+      <StartButton onClick={goToDex}>포켓몬 도감 시작하기</StartButton>
+    </HomeContainer>
   );
 };
 

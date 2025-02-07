@@ -6,6 +6,7 @@ import GloberStyle from "../GlobalStyle";
 import PokemonDetail from "../pages/PokemonDetail";
 import { Provider } from "react-redux";
 import store from "../redux/config/store";
+import { ToastContainer } from "react-toastify";
 
 const Router = () => {
   return (
@@ -13,6 +14,7 @@ const Router = () => {
       <GloberStyle />
       <Provider store={store}>
         <BrowserRouter>
+          <ToastContainer />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/dex" element={<Dex />} />
