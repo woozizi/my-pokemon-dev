@@ -4,8 +4,11 @@ import { AddPokemonButton, Card, ImgInCard } from "../style/CardStyle";
 import usePokemonHandler from "../hooks/usePokemonHandler";
 
 const PokemonCard = ({ pokemon }) => {
+  //router
   const navigate = useNavigate();
   const goToDetail = () => navigate(`/detail/${pokemon.id}`);
+
+  //handler
   const { handleAddPokemon } = usePokemonHandler();
 
   return (

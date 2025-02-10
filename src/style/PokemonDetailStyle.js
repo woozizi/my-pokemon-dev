@@ -6,6 +6,7 @@ export const DetailWrapper = styled.div`
   align-items: center;
   justify-content: center;
   padding: 20px;
+  height: 50vb;
 `;
 
 export const Card = styled.div`
@@ -18,7 +19,7 @@ export const Card = styled.div`
 `;
 
 export const ButtonIndetail = styled.button`
-  background-color: red;
+  background-color: black;
   color: white;
   border: none;
   padding: 10px 20px;

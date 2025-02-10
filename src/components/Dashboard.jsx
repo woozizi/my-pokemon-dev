@@ -1,5 +1,5 @@
 import React from "react";
-import ball from "/public/ball.png";
+import ball from "../assets/ball.png";
 import { Card, ImgInCard } from "../style/CardStyle";
 import {
   DashBoardWrapper,

@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { HomeContainer, StartButton } from "../style/HomeStyle";
+import pokemonlogo from "../assets/pokemonlogo.svg.webp";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -11,8 +12,9 @@ const Home = () => {
 
   return (
     <HomeContainer>
-      <h1>POKEMON</h1>
-      <StartButton onClick={goToDex}>포켓몬 도감 시작하기</StartButton>
+      <img src={pokemonlogo} alt="빈 아이콘" />
+
+      <StartButton onClick={goToDex}>START</StartButton>
     </HomeContainer>
   );
 };

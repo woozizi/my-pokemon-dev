@@ -4,7 +4,9 @@ import { ListWrapper } from "../style/PokemonListStyle";
 import { useSelector } from "react-redux";
 
 const PokemonList = () => {
+  //redux
   const pokemonList = useSelector((state) => state.pokemon.pokemonList);
+
   return (
     <ListWrapper>
       {pokemonList.map((pokemon) => (
