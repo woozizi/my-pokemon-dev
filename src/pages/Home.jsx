@@ -4,6 +4,7 @@ import { HomeContainer, StartButton } from "../style/HomeStyle";
 import pokemonlogo from "../assets/pokemonlogo.svg.webp";
 
 const Home = () => {
+  //router
   const navigate = useNavigate();
 
   const goToDex = () => {
